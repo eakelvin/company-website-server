@@ -6,7 +6,13 @@ const connectDatabase = require('./src/config/database')
 const messageRoute = require('./src/routes/messageRoute')
 
 connectDatabase()
-server.use(cors())
+server.use(cors({
+    origin: [
+        "http://localhost:3000",
+        "https://localhost:3000",
+        "https://website-company-zeta.vercel.app"
+    ]
+}))
 server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
 
