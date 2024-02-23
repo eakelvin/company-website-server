@@ -9,4 +9,13 @@ const createMessage = async(req, res) => {
     }
 }
 
-module.exports = { createMessage }
+const getAllMessages = async(req, res) => {
+    try {
+        const messages = await Message.find()
+        res.json(messages)
+    } catch (error) {
+        res.status(500).json({ error: 'Server Error'})
+    }
+}
+
+module.exports = { createMessage, getAllMessages }
